@@ -1,14 +1,13 @@
-import { createContext, useState, useEffect } from "react";
+import React, { createContext, useState } from "react";
 import { Outlet } from "react-router-dom";
 
+const AuthContext = createContext();
+export default AuthContext;
 
-const AuthContext = createContext()
-export default AuthContext
-
-export const AuthProvider = ()=>{
-    return(
-        <AuthContext.Provider value={{'name':'chai'}} >
-       <Outlet/>
-        </AuthContext.Provider>
-    )
-}
+export const AuthProvider = ({ children }) => {
+  return (
+    <AuthContext.Provider value={{ name: 'chai' }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
